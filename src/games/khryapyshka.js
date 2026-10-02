@@ -15,7 +15,7 @@ export function playKhryapyshka(stage, meter, screen, { onWin }) {
     <p class="puzzle-live-hint">Стрельба по мишеням! Тапай по 🎯, пока не исчезли. Нужно ${NEED} попаданий.</p>
     <div class="score-badge"><span id="score">0</span>/${NEED}</div>
     <div class="tactical-label">тактический цып</div>
-    <img class="khryap-photo" src="/pets/khryapyshka.png" alt="Хряпышка" />
+    <img class="khryap-photo" src="${import.meta.env.BASE_URL}pets/khryapyshka.png" alt="Хряпышка" />
     <div class="shoot-range" id="range">
       <div class="crosshair" id="cross" aria-hidden="true"></div>
       <div class="shooter" id="shooter">${khryapyshkaSVG()}</div>

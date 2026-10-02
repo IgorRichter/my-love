@@ -10,12 +10,15 @@ import { gsap, popIn } from "./anim.js";
 const UNLOCK_DATE = new Date(2026, 9, 11, 0, 0, 0); // 11 Oct 2026 local
 const STORAGE_KEY = "anastasia-pets-progress-v2";
 
+/** Works on localhost and GitHub Pages (/my-love/) */
+const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+
 const PETS = {
   casey: {
     id: "casey",
     name: "Кейси",
     role: "Тёмная Кошка",
-    photo: "/pets/casey.png",
+    photo: asset("pets/casey.png"),
     svg: caseySVG,
     task: "Погладь Кейси",
     hint: "Гладь голову и животик. Хвост трогать нельзя.",
@@ -24,7 +27,7 @@ const PETS = {
     id: "toffi",
     name: "Тоффи",
     role: "Таксочка",
-    photo: "/pets/toffi.png",
+    photo: asset("pets/toffi.png"),
     svg: toffiSVG,
     task: "Покорми Тоффи",
     hint: "Лови падающую еду. Плохие штуки (🍫🍇🧅) — пропускай.",
@@ -33,7 +36,7 @@ const PETS = {
     id: "leva",
     name: "Лева",
     role: "Чеширский Кот",
-    photo: "/pets/leva.png",
+    photo: asset("pets/leva.png"),
     svg: levaSVG,
     task: "Поиграй с Левой",
     hint: "Таскай клубок — поймай 5 прыжков охоты.",
@@ -42,7 +45,7 @@ const PETS = {
     id: "khryapyshka",
     name: "Хряпышка",
     role: "секретный цыплёнок",
-    photo: "/pets/khryapyshka.png",
+    photo: asset("pets/khryapyshka.png"),
     svg: khryapyshkaSVG,
     task: "Стрельба по мишеням",
     hint: "Тапай по мишеням 🎯 — Хряпышка стреляет. Нужно 8 попаданий.",
@@ -51,7 +54,7 @@ const PETS = {
     id: "connect",
     name: "Настя ♥ Игорь",
     role: "Россия ⟷ Тайланд",
-    photo: "/people/igor.png",
+    photo: asset("people/igor.png"),
     svg: () => `
       <div class="duo-svg">
         ${nastyaSVG()}
@@ -181,9 +184,9 @@ function renderHub() {
             const photo =
               id === "connect"
                 ? `<div class="connect-card-faces">
-                    <img class="photo" src="/people/nastya.png" alt="Настя" />
+                    <img class="photo" src="${asset("people/nastya.png")}" alt="Настя" />
                     <span class="card-heart" aria-hidden="true">♥</span>
-                    <img class="photo" src="/people/igor.png" alt="Игорь" />
+                    <img class="photo" src="${asset("people/igor.png")}" alt="Игорь" />
                   </div>`
                 : `<img class="photo" src="${p.photo}" alt="${p.name}" onerror="this.outerHTML='<div class=\\'photo placeholder\\'>🐱</div>'" />`;
             return `
@@ -223,7 +226,7 @@ function renderHub() {
       allDone()
         ? `
       <button class="khryap-corner ${state.done.khryapyshka ? "cleared" : ""}" type="button" data-khryap title="Секретный уровень">
-        <img src="/pets/khryapyshka.png" alt="Хряпышка" />
+        <img src="${asset("pets/khryapyshka.png")}" alt="Хряпышка" />
         <span class="khryap-bubble">${state.done.khryapyshka ? "ещё раз?" : "псст… секретный уровень"}</span>
         ${khryapyshkaSVG()}
       </button>`
@@ -453,13 +456,13 @@ function renderBabies() {
       <div class="baby-stage" id="baby-stage">
         <div class="baby-frame girl-frame show" id="frame-girl">
           <div class="frame-inner">
-            <img src="/babies/girl.jpg" alt="Бейби-девочка" />
+            <img src="${asset("babies/girl.jpg")}" alt="Бейби-девочка" />
           </div>
           <p class="baby-caption">девочка</p>
         </div>
         <div class="baby-frame boy-frame" id="frame-boy" hidden>
           <div class="frame-inner">
-            <img src="/babies/boy.jpg" alt="Бейби-мальчик" />
+            <img src="${asset("babies/boy.jpg")}" alt="Бейби-мальчик" />
           </div>
           <p class="baby-caption">мальчик</p>
         </div>
